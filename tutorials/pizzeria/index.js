@@ -6,5 +6,5 @@ function startOrStopSound() {
   const myAudioPlayer = document.querySelector("#audioPlayer");
 
   if (myAudioPlayer.paused) myAudioPlayer.play();
-  else myAudioPlayer.pause();
+  else myAudioPlayer.pause() ;
 }
