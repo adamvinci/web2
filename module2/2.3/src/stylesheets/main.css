@@ -1,0 +1,25 @@
+  .form {
+
+      display: flex;
+      justify-content: center;
+      padding-top: 2cm;
+
+
+  }
+
+  .form input {
+      display: block;
+      width: 400px;
+
+
+  }
+
+  .form label {
+      padding-top: 0.5cm;
+  }
+
+  .form button {
+      margin-left: 85px;
+      margin-top: 20px;
+      width: 200px;
+  }
