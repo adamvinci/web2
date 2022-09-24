@@ -5,30 +5,26 @@ const myForm = document.querySelector('form');
 const linesInput = document.getElementById('nLine');
 const columnsInput = document.getElementById('ncOl');
 const startStringInput = document.getElementById('ValString');
-const tableWrapper = document.querySelector('#tab');
-const linesTab= document.getElementById('line');
-const columnsTab = document.getElementById('column');
+const tableWrapper = document.getElementById('table');
+
 
 myForm.addEventListener('submit', (e) => {
+
     e.preventDefault();
-    const expectedArray = createArray(linesInput.value, columnsInput.value, startStringInput.value);
-    tableWrapper.innerHTML = expectedArray;
+    createArray(linesInput.value, columnsInput.value, startStringInput.value);
   });
 
 
 
 function createArray( nbline,nbCol,text){
-    const tab=[];
-    for(let i=0;i<nbline;i+=1){
-        linesTab.innerHTML=tab.push([]);
-        
-        for(let y=0;y<nbCol;y+=1){
-            columnsTab.innerHTML=tab[i].push(`${text}[${nbline}][${nbCol}]`);
+    for(let i=0;i<nbline;i+=1){ 
+        const row= tableWrapper.insertRow(i);      
+        for(let y=0;y<nbCol;y+=1){ 
+        const col= row.insertCell(y)
+        col.innerHTML=` ${text}[${i}${y}] `;
         }
         
     }
-
-return tab;
 
 }
 

@@ -23,3 +23,11 @@
       margin-top: 20px;
       width: 200px;
   }
+
+  #table{
+    position: absolute;
+    right:  50%;
+    top: 50%
+
+
+  }
