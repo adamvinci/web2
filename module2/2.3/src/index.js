@@ -12,7 +12,6 @@ const columnsTab = document.getElementById('column');
 myForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const expectedArray = createArray(linesInput.value, columnsInput.value, startStringInput.value);
-    linesTab.innerText='fafr'
     tableWrapper.innerHTML = expectedArray;
   });
 
@@ -21,10 +20,10 @@ myForm.addEventListener('submit', (e) => {
 function createArray( nbline,nbCol,text){
     const tab=[];
     for(let i=0;i<nbline;i+=1){
-      tab.push([]);
+        linesTab.innerHTML=tab.push([]);
         
         for(let y=0;y<nbCol;y+=1){
-           tab[i].push(`${text}[${nbline}][${nbCol}]`);
+            columnsTab.innerHTML=tab[i].push(`${text}[${nbline}][${nbCol}]`);
         }
         
     }
