@@ -8,14 +8,19 @@
   margin-left: auto;
   margin-right: auto;
 }
-.liste ul{
-  display:flex;
+.liste div {
+display: flex;
+padding-top: 1.5cm;
 
 }
+.liste div li{
+display: inline;
+  margin-top: 10px;
+  width: 300px;
+  float: left;
 
-.liste ul li{
-  display: flex;
- float: left;
- padding-left: 1cm;
-  
 }
+ .liste div img{
+
+  height: 200px;
+ }
