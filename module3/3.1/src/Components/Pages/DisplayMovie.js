@@ -7,23 +7,28 @@ import { readMovies } from "../../Models/movies";
 const DisplayMovie = () => {
     const main = document.querySelector('main')
 
-    main.innerHTML = '<div id="movieWrapper"></div>';
+    main.innerHTML = '<div id="wrapper"> </div>';
 
-    const movieWrapper = document.querySelector('#movieWrapper');
+    const movieD=document.getElementById('wrapper')
 
     const movies = readMovies();
 
     const html = displayMovie(movies);
 
 
-     movieWrapper.innerHTML = html;
+    movieD.innerHTML=html;
 
 };
 
 function displayMovie(movies) {
 
-    let tableHtml= `
-    <table class="table" >
+    let tableHtml= ` 
+    <div class="row justify-content-center">
+    
+    <div class="col-auto">
+   
+    <table class="table">
+
     <thead>
     <tr>
     <th>Ttile</th>
@@ -35,11 +40,11 @@ function displayMovie(movies) {
     </thead>
 
     <tbody> `;
-    movies.array.forEach(element => {
+    movies.forEach((element) => {
         tableHtml +=`
         
         <tr>
-            <td> <a href= "${element.link}"> ${element.name}</a> </td>
+            <td> <a href= "${element.link}"> ${element.title    }</a> </td>
             <td> ${element.duration}</td>
             <td> ${element.budget}</td>
 
