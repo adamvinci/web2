@@ -40,12 +40,22 @@ router.get('/', (req, res, next) => {
   const orderByDuration =
     req?.query?.order?.includes('duration') ? req.query.order : undefined;
   let orderedMenu;
+  
+  const orderBySearch=req.query.search;
+  console.log(orderBySearch)
   console.log(`order by ${orderByDuration ?? 'not requested'}`);
   if (orderByDuration) orderedMenu = [...FILM].sort((a, b) => a.duration.localeCompare(b.duration));
   if (orderByDuration === '-duration') orderedMenu = orderedMenu.reverse();
+  
+  const filmOfIndex=[];
+  if(orderBySearch !== undefined) filmOfIndex.push('ca marche search');
 
-  console.log('GET /film');
+
+  if(orderedMenu){
   return res.json(orderedMenu ?? FILM);
+  }else if(filmOfIndex){
+    return res.json(filmOfIndex)
+  }
 });
 
 // Read the pizza identified by an id in the menu
@@ -58,6 +68,7 @@ router.get('/:id', (req, res) => {
 
   return res.json(FILM[filmOfIndex]);
 });
+
 
 // Create a pizza to be added to the menu.
 router.post('/', (req, res) => {

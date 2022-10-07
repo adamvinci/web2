@@ -13,6 +13,10 @@ GET {{baseUrl}}/film/?order=+durat
 ### Read all pizzas sorted by title (descending)
 GET {{baseUrl}}/film/?order=-duration
 
+###
+GET {{baseUrl}}/film/az
+
+
 ### Read pizza identified by 2
 GET {{baseUrl}}/film/4
 
