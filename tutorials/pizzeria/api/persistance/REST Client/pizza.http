@@ -1,0 +1,37 @@
+### Read all pizzas
+GET http://localhost:3000/pizza
+### Read all pizzas with File variable
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/pizza
+### Read all pizzas sorted by title (ascending)
+GET {{baseUrl}}/pizza/?order=+title
+
+### Read all pizzas sorted by title (descending)
+GET {{baseUrl}}/pizza/?order=-title
+
+### Create a pizza
+POST {{baseUrl}}/pizza
+Content-Type: application/json
+
+{
+    "title":"fefz",
+    "content":"fzfzc"
+}
+
+### Create a pizza which lacks a property
+POST {{baseUrl}}/pizza
+Content-Type: application/json
+
+{
+    "title":"dadada",
+    "content":"Epinards, Brocolis, Olives vertes, Basilic"
+}
+
+
+###
+PATCH {{baseUrl}}/pizza/1
+Content-Type: application/json
+
+{
+    "title":"Modif permanent"
+}
