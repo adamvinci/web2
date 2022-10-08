@@ -8,15 +8,16 @@ GET http://localhost:3000/film
 GET {{baseUrl}}/film
 
 ### Read all pizzas sorted by title (ascending)
-GET {{baseUrl}}/film/?order=+durat
+GET {{baseUrl}}/film/?order=+duration
 
 ### Read all pizzas sorted by title (descending)
 GET {{baseUrl}}/film/?order=-duration
 
 ###
-GET {{baseUrl}}/film/az
+GET {{baseUrl}}/film/?search=a
 
-
+###
+GET {{baseUrl}}/film/?search=x
 ### Read pizza identified by 2
 GET {{baseUrl}}/film/4
 
@@ -25,7 +26,7 @@ POST {{baseUrl}}/film
 Content-Type: application/json
 
 {
-    "title":"Avengers 5",
+    "title":"xdezda",
     "duration":"5h30",
     "budget":"800M",
     "link":"https://avengers5"

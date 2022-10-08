@@ -40,22 +40,29 @@ router.get('/', (req, res, next) => {
   const orderByDuration =
     req?.query?.order?.includes('duration') ? req.query.order : undefined;
   let orderedMenu;
-  
-  const orderBySearch=req.query.search;
-  console.log(orderBySearch)
+
+  const orderBySearch = req.query.search;
+
+
   console.log(`order by ${orderByDuration ?? 'not requested'}`);
+  console.log(`search  ${orderBySearch ?? 'not requested'}`);
   if (orderByDuration) orderedMenu = [...FILM].sort((a, b) => a.duration.localeCompare(b.duration));
   if (orderByDuration === '-duration') orderedMenu = orderedMenu.reverse();
-  
-  const filmOfIndex=[];
-  if(orderBySearch !== undefined) filmOfIndex.push('ca marche search');
 
-
-  if(orderedMenu){
-  return res.json(orderedMenu ?? FILM);
-  }else if(filmOfIndex){
-    return res.json(filmOfIndex)
+  const filmOfIndex = [];
+  if (orderBySearch !== undefined) {
+    for (let i = 0; i < FILM.length; i++) {
+      let film = FILM[i].title.toUpperCase();
+      if (film.startsWith(orderBySearch.toUpperCase()))
+        filmOfIndex.push(FILM[i]);
+    }
   }
+  if (orderBySearch) { return res.json(filmOfIndex) }
+  else {
+    return res.json(orderedMenu ?? FILM)
+  }
+
+
 });
 
 // Read the pizza identified by an id in the menu
@@ -125,8 +132,8 @@ router.patch('/:id', (req, res) => {
   console.log('POST /pizzas');
 
   if ((!title && !duration && !link && !budget)
-   || title?.length === 0 || duration?.length === 0|| link?.length === 0 || budget?.length === 0)return res.sendStatus(400);
-  
+    || title?.length === 0 || duration?.length === 0 || link?.length === 0 || budget?.length === 0) return res.sendStatus(400);
+
   const foundIndex = FILM.findIndex(f => f.id == req.params.id);
 
   if (foundIndex < 0) return res.sendStatus(404);
