@@ -1,0 +1,49 @@
+######### NORMAL OPERATION  ###########
+
+### Read all film
+GET http://localhost:3000/film
+
+### Read all pizzas with File variable
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/film
+
+### Read all pizzas sorted by title (ascending)
+GET {{baseUrl}}/film/?order=+duration
+
+### Read all pizzas sorted by title (descending)
+GET {{baseUrl}}/film/?order=-duration
+
+###
+GET {{baseUrl}}/film/?search=a
+
+###
+GET {{baseUrl}}/film/?search=x
+### Read pizza identified by 2
+GET {{baseUrl}}/film/1
+
+### Create a pizza
+POST {{baseUrl}}/film
+Content-Type: application/json
+
+{
+    "title":"6",
+    "duration":"5h30",
+    "budget":"800M",
+    "link":"https://avengers5"
+
+}
+
+### Delete pizza identified by 2
+DELETE {{baseUrl}}/film/2
+
+### Update the pizza identified by 6
+PATCH {{baseUrl}}/film/1
+Content-Type: application/json
+
+{
+    "title":"Magic Green 2"
+}
+
+
+
+
