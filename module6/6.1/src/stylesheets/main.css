@@ -1,0 +1,27 @@
+main h1{
+    text-align: center;
+}
+ main img{
+
+    height: 50px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.liste div {
+display: flex;
+padding-top: 1.5cm;
+
+}
+.liste div li{
+display: inline;
+  margin-top: 10px;
+  width: 300px;
+  float: left;
+
+}
+ .liste div img{
+
+  height: 200px;
+ }
+
