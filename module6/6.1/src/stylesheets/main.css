@@ -25,3 +25,8 @@ display: inline;
   height: 200px;
  }
 
+.order{
+  margin: 10px auto;
+  width: 100px;
+  height:50px
+}

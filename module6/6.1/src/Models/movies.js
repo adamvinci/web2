@@ -4,7 +4,12 @@ const readAllMovies= async (search)=>{
         let response=await fetch('api/film')
         
         if(search!== undefined){
-             response=await fetch(`/api/film/?search=${search}`);
+            if(search.includes('duration')){
+                response=await fetch(`/api/film/?order=${search}`);
+            }else{
+                response=await fetch(`/api/film/?search=${search}`);
+            }
+            
         }
        
         if(!response.ok){

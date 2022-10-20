@@ -3,14 +3,14 @@ import { deleteOneMovie, readAllMovies, updateMovie } from "../../Models/movies"
 
 
 
-const DisplayMovie = async () => {
+const DisplayMovie = async (movie) => {
     const main = document.querySelector('main')
 
     main.innerHTML = '<div id="wrapper"> </div>';
 
     const movieD=document.querySelector('#wrapper')
 
-    const movies = await readAllMovies();
+    const movies = await readAllMovies(movie);
 
 
     const html = displayMovie(movies);
@@ -27,7 +27,8 @@ function displayMovie(movies) {
     <input type="text" id="textTosearch" placeholder="film qui commence par ..." > 
     <button type="submit" class='search' />Search</button>
     <div class="row justify-content-center">
-    
+    <button type="submit" class='order' data-element-order='duration' />ordre croissant</button>
+    <button type="submit" class='order' data-element-order='-duration' />Ordre decroissant</button>
     <div class="col-auto">
    
     <table class="table">
@@ -104,10 +105,21 @@ function attachEventListener(){
 
 
     film.querySelectorAll('.search').forEach((t)=>{
-        t.addEventListener('click',async()=>{
+        t.addEventListener('click',async(e)=>{
+            e.preventDefault();
             const textTosearch=document.querySelector('#textTosearch')
-          await readAllMovies(textTosearch.value)
-            DisplayMovie()
+          DisplayMovie(textTosearch.value)
+         
+            
+        })
+    })
+    film.querySelectorAll('.order').forEach((t)=>{
+        t.addEventListener('click',async(e)=>{
+         const {elementOrder}=e.target.dataset
+            DisplayMovie(elementOrder);
+          
+         
+            
         })
     })
 
