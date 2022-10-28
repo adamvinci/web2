@@ -16,9 +16,11 @@ const setAuthenticatedUser = (authenticatedUser) => {
 
 const isAuthenticated = () => currentUser !== undefined;
 
-const clearAuthenticatedUser = () => {
+const clearAuthenticatedUser = async () => {
   localStorage.removeItem(STOR_NAME);
   currentUser = undefined;
+  const response = await fetch('api/auths/logout');
+  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
 };
 
 // eslint-disable-next-line object-curly-newline
