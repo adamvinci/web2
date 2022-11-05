@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
-import { isAuthenticated } from '../../utils/auth';
+import { getAuthenticatedUser, isAuthenticated } from '../../utils/auth';
 
 /**
  * Render the Navbar which is styled by using Bootstrap
@@ -13,7 +13,7 @@ const Navbar = () => {
   navbarView();
 }
 function navbarView(){
-  const user=isAuthenticated();
+  const user=getAuthenticatedUser();
   const navbar = `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -75,7 +75,7 @@ function navbarView(){
                 <li class="nav-item">
                 <a class="nav-link" href="#" data-uri="/logout">logout</a>
                 <li class="nav-item">
-              <a class="nav-link disabled" href="#">${user?.userName}</a>
+              <a class="nav-link disabled" href="#">${user?.username}</a>
 
               </li>                        
             </ul>
